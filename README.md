@@ -34,7 +34,7 @@
 <body>
     <div class="container">
         <!-- Hidden YouTube video for background music -->
-        <iframe width="0" height="0" src="https://www.youtube.com/embed/TAyErJUq8Io?autoplay=1&loop=1&playlist=TAyErJUq8Io" frameborder="0" allow="autoplay"></iframe>
+        <iframe id="bg-music" width="0" height="0" src="https://www.youtube.com/embed/TAyErJUq8Io?autoplay=1&loop=1&playlist=TAyErJUq8Io&mute=1" frameborder="0" allow="autoplay"></iframe>
 
         <div class="section">
             <h2>LOGS</h2>
@@ -100,6 +100,15 @@
                     .join('');
             }
         }
+
+        // Unmute the video after a delay to bypass browser restrictions
+        window.addEventListener('load', function() {
+            const video = document.getElementById('bg-music');
+            setTimeout(() => {
+                const src = video.src.replace('&mute=1', '&mute=0');
+                video.src = src;
+            }, 1000); // 1-second delay to unmute
+        });
     </script>
 </body>
 </html>
