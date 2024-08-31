@@ -29,6 +29,20 @@
         button:hover {
             background-color: gray;
         }
+        .new-section {
+            display: none;
+            margin-top: 20px;
+        }
+        .new-section h2 {
+            color: red;
+            background: linear-gradient(to right, red, silver, gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .new-section button {
+            background: linear-gradient(to right, purple, pink);
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -88,6 +102,14 @@
                 <button onclick="openLink('', this)">DOI-#8</button>
             </div>
         </div>
+
+        <!-- New section to appear after a delay -->
+        <div class="new-section" id="boss-section">
+            <h2>BOSS's Of The Abyss</h2>
+            <div class="button-row">
+                <button onclick="openLink('', this)">Null</button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -101,7 +123,22 @@
             }
         }
 
-        // Unmute the video after a delay to bypass browser restrictions
+        // Function to play new music and show the new section
+        function activateNewSection() {
+            const video = document.getElementById('bg-music');
+            video.src = 'https://www.youtube.com/embed/u3pQzhQPEis?autoplay=1&loop=1&playlist=u3pQzhQPEis&mute=0';
+
+            const newSection = document.getElementById('boss-section');
+            newSection.style.display = 'block';
+        }
+
+        // Trigger the new section and music change after a random delay between 30 minutes and 2 hours
+        window.addEventListener('load', function() {
+            const delay = Math.floor(Math.random() * (120 - 30 + 1) + 30) * 60000; // Random delay between 30 and 120 minutes
+            setTimeout(activateNewSection, delay);
+        });
+
+        // Unmute the original video after a delay to bypass browser restrictions
         window.addEventListener('load', function() {
             const video = document.getElementById('bg-music');
             setTimeout(() => {
