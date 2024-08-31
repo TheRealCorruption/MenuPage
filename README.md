@@ -39,7 +39,7 @@
         <div class="section">
             <h2>LOGS</h2>
             <div class="button-row">
-                <button onclick="openLink('', this)">Tape-#1</button>
+                <button onclick="openLink('https://scratch.mit.edu/projects/1061726554/', this)">Tape-#1</button>
                 <button onclick="openLink('', this)">Tape-#2</button>
                 <button onclick="openLink('', this)">Tape-#3</button>
                 <button onclick="openLink('', this)">Tape-#4</button>
