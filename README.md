@@ -43,6 +43,30 @@
             background: linear-gradient(to right, purple, pink);
             color: white;
         }
+        .timeline-x {
+            display: none;
+        }
+        .timeline-x h2 {
+            background: linear-gradient(to right, rainbow, white);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .timeline-x .small-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .timeline-x .small-buttons button {
+            font-size: 12px;
+            padding: 5px;
+        }
+        .timeline-x .large-buttons {
+            margin-top: 20px;
+        }
+        .timeline-x .large-buttons button {
+            padding: 10px;
+            width: 150px;
+        }
     </style>
 </head>
 <body>
@@ -50,7 +74,7 @@
         <!-- Hidden YouTube video for background music -->
         <iframe id="bg-music" width="0" height="0" src="https://www.youtube.com/embed/TAyErJUq8Io?autoplay=1&loop=1&playlist=TAyErJUq8Io&mute=1" frameborder="0" allow="autoplay"></iframe>
 
-        <div class="section">
+        <div class="section" id="logs-section">
             <h2>LOGS</h2>
             <div class="button-row">
                 <button onclick="openLink('https://scratch.mit.edu/projects/1061726554/', this)">Tape-#1</button>
@@ -63,7 +87,7 @@
                 <button onclick="openLink('', this)">Tape-#8</button>
             </div>
         </div>
-        <div class="section">
+        <div class="section" id="timeline-section">
             <h2>TIMELINE-FILES</h2>
             <div class="button-row">
                 <button onclick="openLink('', this)">T-#1</button>
@@ -76,7 +100,7 @@
                 <button onclick="openLink('', this)">T-#8</button>
             </div>
         </div>
-        <div class="section">
+        <div class="section" id="discoverys-section">
             <h2>DISCOVERYS</h2>
             <div class="button-row">
                 <button onclick="openLink('', this)">D-#1</button>
@@ -89,7 +113,7 @@
                 <button onclick="openLink('', this)">D-#8</button>
             </div>
         </div>
-        <div class="section">
+        <div class="section" id="doi-section">
             <h2>DATA-ON-INHABITENTS</h2>
             <div class="button-row">
                 <button onclick="openLink('', this)">DOI-#1</button>
@@ -108,6 +132,41 @@
             <h2>BOSS's Of The Abyss</h2>
             <div class="button-row">
                 <button onclick="openLink('', this)">Null</button>
+            </div>
+        </div>
+
+        <!-- Timeline X section -->
+        <div class="timeline-x" id="timeline-x-section">
+            <h2>Timeline X</h2>
+            <div class="small-buttons">
+                <!-- Small floating buttons -->
+                <button>File-#1</button>
+                <button>File-#2</button>
+                <button>File-#3</button>
+                <button>File-#4</button>
+                <button>File-#5</button>
+                <button>File-#6</button>
+                <button>File-#7</button>
+                <button>File-#8</button>
+                <button>File-#9</button>
+                <button>File-#10</button>
+                <button>File-#11</button>
+                <button>File-#12</button>
+                <button>File-#13</button>
+                <button>File-#14</button>
+                <button>File-#15</button>
+                <button>File-#16</button>
+                <button>File-#17</button>
+                <button>File-#18</button>
+                <button>File-#19</button>
+                <button>File-#20</button>
+            </div>
+            <div class="large-buttons">
+                <!-- Larger buttons -->
+                <button>Cameras</button>
+                <button>Entries</button>
+                <button>Boss-TData</button>
+                <button>Soul,Data</button>
             </div>
         </div>
     </div>
@@ -132,19 +191,31 @@
             newSection.style.display = 'block';
         }
 
-        // Trigger the new section and music change after a random delay between 30 minutes and 2 hours
-        window.addEventListener('load', function() {
-            const delay = Math.floor(Math.random() * (120 - 30 + 1) + 30) * 60000; // Random delay between 30 and 120 minutes
-            setTimeout(activateNewSection, delay);
-        });
+        // Function to activate Timeline X
+        function activateTimelineX() {
+            const randomValue = Math.floor(Math.random() * 10) + 1;
+            if (randomValue === 5) {
+                document.getElementById('logs-section').remove();
+                document.getElementById('timeline-section').remove();
+                document.getElementById('discoverys-section').remove();
+                document.getElementById('doi-section').remove();
+                document.getElementById('boss-section').remove();
 
-        // Unmute the original video after a delay to bypass browser restrictions
-        window.addEventListener('load', function() {
-            const video = document.getElementById('bg-music');
-            setTimeout(() => {
-                const src = video.src.replace('&mute=1', '&mute=0');
-                video.src = src;
-            }, 1000); // 1-second delay to unmute
+                const timelineXSection = document.getElementById('timeline-x-section');
+                timelineXSection.style.display = 'block';
+
+                // Change music to Timeline X theme
+                const video = document.getElementById('bg-music');
+                video.src = 'https://www.youtube.com/embed/TbW-FEk_lks?autoplay=1&loop=1&playlist=TbW-FEk_lks&mute=0';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const delay = Math.floor(Math.random() * (120 - 30 + 1) + 30) * 60 * 1000;
+            setTimeout(activateNewSection, delay);
+
+            // Activate Timeline X based on a random condition
+            setTimeout(activateTimelineX, 12 * 60 * 1000); // 12 minutes delay
         });
     </script>
 </body>
