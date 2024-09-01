@@ -67,12 +67,36 @@
             padding: 10px;
             width: 150px;
         }
+        /* New gradient colors */
+        #logs-section h2 {
+            background: linear-gradient(to right, green, code);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        #timeline-section h2 {
+            background: linear-gradient(to right, lightblue, white);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        #discoverys-section h2 {
+            background: linear-gradient(to right, purple, pink);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        #doi-section h2 {
+            background: linear-gradient(to right, red, white);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Hidden YouTube video for background music -->
-        <iframe id="bg-music" width="0" height="0" src="https://www.youtube.com/embed/TAyErJUq8Io?autoplay=1&loop=1&playlist=TAyErJUq8Io&mute=1" frameborder="0" allow="autoplay"></iframe>
+        <!-- Audio tag for background music -->
+        <audio id="bg-music" autoplay loop>
+            <source src="https://www.youtube.com/embed/TAyErJUq8Io?autoplay=1&loop=1&playlist=TAyErJUq8Io&mute=1" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
 
         <div class="section" id="logs-section">
             <h2>LOGS</h2>
@@ -138,6 +162,7 @@
         <!-- Timeline X section -->
         <div class="timeline-x" id="timeline-x-section">
             <h2>Timeline X</h2>
+            <hr>
             <div class="small-buttons">
                 <!-- Small floating buttons -->
                 <button>File-#1</button>
@@ -161,6 +186,7 @@
                 <button>File-#19</button>
                 <button>File-#20</button>
             </div>
+            <hr>
             <div class="large-buttons">
                 <!-- Larger buttons -->
                 <button>Cameras</button>
@@ -168,6 +194,7 @@
                 <button>Boss-TData</button>
                 <button>Soul,Data</button>
             </div>
+            <hr>
         </div>
     </div>
 
@@ -185,37 +212,30 @@
         // Function to play new music and show the new section
         function activateNewSection() {
             const video = document.getElementById('bg-music');
-            video.src = 'https://www.youtube.com/embed/u3pQzhQPEis?autoplay=1&loop=1&playlist=u3pQzhQPEis&mute=0';
-
-            const newSection = document.getElementById('boss-section');
-            newSection.style.display = 'block';
+            video.muted = false; // Unmute the music after autoplay starts
+            document.getElementById('boss-section').style.display = 'block';
         }
 
-        // Function to activate Timeline X
+        // Function to randomly activate Timeline X
         function activateTimelineX() {
-            const randomValue = Math.floor(Math.random() * 10) + 1;
-            if (randomValue === 5) {
-                document.getElementById('logs-section').remove();
-                document.getElementById('timeline-section').remove();
-                document.getElementById('discoverys-section').remove();
-                document.getElementById('doi-section').remove();
-                document.getElementById('boss-section').remove();
-
-                const timelineXSection = document.getElementById('timeline-x-section');
+            const bossSection = document.getElementById('boss-section');
+            const timelineXSection = document.getElementById('timeline-x-section');
+            if (Math.random() > 0.5) {
                 timelineXSection.style.display = 'block';
-
-                // Change music to Timeline X theme
-                const video = document.getElementById('bg-music');
-                video.src = 'https://www.youtube.com/embed/TbW-FEk_lks?autoplay=1&loop=1&playlist=TbW-FEk_lks&mute=0';
+                bossSection.style.display = 'none';
+                // Disable the BOSS section when Timeline X is active
+            } else {
+                timelineXSection.style.display = 'none';
+                bossSection.style.display = 'block';
             }
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            // Activate new section and music after a 25-minute delay (1500000 milliseconds)
+        document.addEventListener('DOMContentLoaded', function () {
+            // Show new section and music after a 25-minute delay (1500000 milliseconds)
             setTimeout(activateNewSection, 1500000);
 
-            // Check for activating Timeline X randomly every 1 minute (60000 milliseconds)
-            setInterval(activateTimelineX, 60000);
+            // Check for activating Timeline X randomly every 15 minutes (900000 milliseconds)
+            setInterval(activateTimelineX, 900000);
         });
     </script>
 </body>
