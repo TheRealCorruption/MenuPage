@@ -210,12 +210,12 @@
             }
         }
 
-        window.addEventListener('DOMContentLoaded', (event) => {
-            const delay = Math.floor(Math.random() * (120 - 30 + 1) + 30) * 60 * 1000;
-            setTimeout(activateNewSection, delay);
+        window.addEventListener('DOMContentLoaded', () => {
+            // Activate new section and music after a 25-minute delay (1500000 milliseconds)
+            setTimeout(activateNewSection, 1500000);
 
-            // Activate Timeline X based on a random condition
-            setTimeout(activateTimelineX, 12 * 60 * 1000); // 12 minutes delay
+            // Check for activating Timeline X randomly every 1 minute (60000 milliseconds)
+            setInterval(activateTimelineX, 60000);
         });
     </script>
 </body>
