@@ -27,7 +27,7 @@
             cursor: pointer;
         }
         button:hover {
-            background-color: gray;
+            background-color: Light Red;
         }
         .new-section {
             display: none;
@@ -69,7 +69,7 @@
         }
         /* New gradient colors */
         #logs-section h2 {
-            background: linear-gradient(to right, green, code);
+            background: linear-gradient(to right, Bright green);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -94,7 +94,7 @@
     <div class="container">
         <!-- Audio tag for background music -->
         <audio id="bg-music" autoplay loop>
-            <source src="https://www.youtube.com/embed/TAyErJUq8Io?autoplay=1&loop=1&playlist=TAyErJUq8Io&mute=1" type="audio/mp3">
+            <source src="https://www.youtube.com/embed/TAyErJUq8Io?autoplay=1&loop=1&playlist=TAyErJUq8Io&mute=0" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
 
