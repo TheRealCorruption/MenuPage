@@ -27,7 +27,7 @@
             cursor: pointer;
         }
         button:hover {
-            background-color: Light Red;
+            background-color: lightcoral;
         }
         .new-section {
             display: none;
@@ -47,7 +47,7 @@
             display: none;
         }
         .timeline-x h2 {
-            background: linear-gradient(to right, rainbow, white);
+            background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -69,7 +69,7 @@
         }
         /* New gradient colors */
         #logs-section h2 {
-            background: linear-gradient(to right, Bright green);
+            background: linear-gradient(to right, limegreen, yellowgreen);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -94,7 +94,7 @@
     <div class="container">
         <!-- Audio tag for background music -->
         <audio id="bg-music" autoplay loop>
-            <source src="https://www.youtube.com/embed/TAyErJUq8Io?autoplay=1&loop=1&playlist=TAyErJUq8Io&mute=0" type="audio/mp3">
+            <source src="path-to-your-music-file.mp3" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
 
@@ -125,7 +125,7 @@
             </div>
         </div>
         <div class="section" id="discoverys-section">
-            <h2>DISCOVERYS</h2>
+            <h2>DISCOVERIES</h2>
             <div class="button-row">
                 <button onclick="openLink('', this)">D-#1</button>
                 <button onclick="openLink('', this)">D-#2</button>
@@ -138,7 +138,7 @@
             </div>
         </div>
         <div class="section" id="doi-section">
-            <h2>DATA-ON-INHABITENTS</h2>
+            <h2>DATA-ON-INHABITANTS</h2>
             <div class="button-row">
                 <button onclick="openLink('', this)">DOI-#1</button>
                 <button onclick="openLink('', this)">DOI-#2</button>
@@ -192,7 +192,7 @@
                 <button>Cameras</button>
                 <button>Entries</button>
                 <button>Boss-TData</button>
-                <button>Soul,Data</button>
+                <button>Soul, Data</button>
             </div>
             <hr>
         </div>
@@ -211,32 +211,16 @@
 
         // Function to play new music and show the new section
         function activateNewSection() {
-            const video = document.getElementById('bg-music');
-            video.muted = false; // Unmute the music after autoplay starts
+            const audio = document.getElementById('bg-music');
+            audio.src = 'path-to-new-music-file.mp3';
+            audio.play();
+
             document.getElementById('boss-section').style.display = 'block';
+            document.getElementById('timeline-x-section').style.display = 'block';
         }
 
-        // Function to randomly activate Timeline X
-        function activateTimelineX() {
-            const bossSection = document.getElementById('boss-section');
-            const timelineXSection = document.getElementById('timeline-x-section');
-            if (Math.random() > 0.5) {
-                timelineXSection.style.display = 'block';
-                bossSection.style.display = 'none';
-                // Disable the BOSS section when Timeline X is active
-            } else {
-                timelineXSection.style.display = 'none';
-                bossSection.style.display = 'block';
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            // Show new section and music after a 25-minute delay (1500000 milliseconds)
-            setTimeout(activateNewSection, 1500000);
-
-            // Check for activating Timeline X randomly every 15 minutes (900000 milliseconds)
-            setInterval(activateTimelineX, 900000);
-        });
+        // Activate new section after 3 minutes
+        setTimeout(activateNewSection, 180000); // 180000 milliseconds = 3 minutes
     </script>
 </body>
 </html>
